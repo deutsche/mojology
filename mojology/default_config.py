@@ -5,6 +5,9 @@ MONGO_PORT = 27017
 MONGO_DB = "syslog"
 MONGO_COLLECTION = "messages"
 
+# MONGO_USER = "username"
+# MONGO_PASS = "password"
+
 MOJOLOGY_PAGESIZE = 15
 
 MOJOLOGY_COLLECTION_PREFIX = "mojology."

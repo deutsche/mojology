@@ -27,6 +27,10 @@ m = Mojology (config_file = cfg_file)
 
 conn = pymongo.Connection (m.config['MONGO_HOST'], m.config['MONGO_PORT'])
 db = conn[m.config['MONGO_DB']]
+try:
+    db.authenticate (m.config['MONGO_USER'], m.config['MONGO_PASS'])
+except:
+    pass
 coll = db[m.config['MONGO_COLLECTION']]
 cache = m.config['MOJOLOGY_COLLECTION_PREFIX']
 layout = m.config['MOJOLOGY_LAYOUT']

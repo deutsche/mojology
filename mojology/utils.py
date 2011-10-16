@@ -44,6 +44,10 @@ def connected():
             except pymongo.errors.ConnectionFailure, e:
                 abort (503)
             g.db = g.mongo[current_app.config['MONGO_DB']]
+            try:
+                g.db.authenticate(current_app.config['MONGO_USER'], current_app.config['MONGO_PASS'])
+            except:
+                pass
             g.coll = g.db[current_app.config['MONGO_COLLECTION']]
             if not g.coll:
                 abort (503)
