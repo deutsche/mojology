@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 ## mojology - a syslog browser with style
-## Copyright (C) 2011  Gergely Nagy <algernon@balabit.hu>
+## Copyright (C) 2011, 2013  Gergely Nagy <algernon@balabit.hu>
 ##
 ## Mojology is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
 from mojology import Mojology
 from mojology.db.layout import DefaultLayout
 import unittest
-import pymongo, pymongo.json_util
+import pymongo, bson.json_util
 import json
 import os
 
@@ -51,7 +51,7 @@ class TestCase (unittest.TestCase):
     def populate (self):
         fp = open (os.path.join (os.path.dirname (__file__), "test_data.json"))
         for line in fp:
-            j = json.loads (line, object_hook = pymongo.json_util.object_hook)
+            j = json.loads (line, object_hook = bson.json_util.object_hook)
             self.coll.insert (j)
 
 

@@ -1,5 +1,5 @@
 ## mojology - a syslog browser with style
-## Copyright (C) 2011  Gergely Nagy <algernon@balabit.hu>
+## Copyright (C) 2011, 2013  Gergely Nagy <algernon@balabit.hu>
 ##
 ## Mojology is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -20,9 +20,9 @@
 from mojology.utils import templated, connected
 
 from flask import Module, g, Markup, redirect, url_for
-import pymongo.objectid, pymongo.json_util
+import bson.objectid, bson.json_util
 import json
-from pymongo.code import Code
+from bson.code import Code
 
 statsm = Module (__name__)
 
@@ -37,7 +37,7 @@ def _mr_dump (subtable):
     s = []
     for t in r:
         s.append (t)
-    return Markup (json.dumps (s, default = pymongo.json_util.default))
+    return Markup (json.dumps (s, default = bson.json_util.default))
 
 @statsm.route ("/hosts")
 @statsm.route ("/hosts/")

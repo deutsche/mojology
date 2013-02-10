@@ -1,5 +1,5 @@
 ## mojology - a syslog browser with style
-## Copyright (C) 2011  Gergely Nagy <algernon@balabit.hu>
+## Copyright (C) 2011, 2013  Gergely Nagy <algernon@balabit.hu>
 ##
 ## Mojology is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 from mojology.utils import templated, connected
 
 from flask import Module, g, url_for, render_template, Markup, abort
-import pymongo.objectid
+import bson.objectid
 
 browser = Module (__name__)
 
@@ -76,7 +76,7 @@ def host(hostname, page = 1):
 @connected ()
 def log (logid):
     try:
-        oid = pymongo.objectid.ObjectId (logid)
+        oid = bson.objectid.ObjectId (logid)
     except:
         abort (404)
 
