@@ -47,7 +47,8 @@ def Mojology (config_file = None, config_object = None):
     
     @app.template_filter ('datetime')
     def datetimeformat (value, format='%Y-%m-%d %H:%M:%S'):
-        return datetime.datetime.fromtimestamp (float (value)).strftime (format)
+        return value.strftime(format)
+
 
     @app.errorhandler (404)
     def handler_404 (error):
