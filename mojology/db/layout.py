@@ -84,7 +84,7 @@ class ValuePairsLayout:
                 h['value'] = self._get_key (h['path'])
                 
         if self._get_key ('PID') != "":
-            self.headers[3]['value'] += '[' + self._get_key ('PID') + ']'
+            self.headers[3]['value'] += '[' + str(self._get_key('PID')) + ']'
 
         self.keys = dict ()
         for key in self.msg:
